@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE HTML>
+<html>
+	<link rel="stylesheet" href="sneek2.css">
+<link rel="shortcut icon" href="file:///home/chronos/u-73c4f7d23dd65f4eca2c9660df2fd7571102eb57/MyFiles/Downloads/Sneek%202%20favicon.jpg">
+<meta charset="UTF-8">
+<title>Sneek2 (☉ ͜ʖ☉) </title>
+	<marquee>this game was made using autism
+	<button event.key="F" onclick="goFullScreen();">fullscreen</button></marquee>
+	<script>
+		 function goFullScreen(){
+    var canvas = document.getElementById("sneek");
+    if(canvas.requestFullScreen)
+        canvas.requestFullScreen();
+    else if(canvas.webkitRequestFullScreen)
+        canvas.webkitRequestFullScreen();
+    else if(canvas.mozRequestFullScreen)
+        canvas.mozRequestFullScreen();
+}
+const times = [];
+var stats = new Stats();
+stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild( stats.dom );
+
+function animate() {
+
+	stats.begin();
+
+	// monitored code goes here
+
+	stats.end();
+
+	requestAnimationFrame( animate );
+
+}
+
+requestAnimationFrame( animate );
+```
+       
+    </script>
+<style type="text/css">
+            @import url("https://fonts.googleapis.com/css?family=VT323");
+            
+            ::selection {color:#FFD700; background:transparent;}
+            ::-moz-selection {color:#FFD700; background:transparent;}
+            
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: "VT323";
+            }
+            body{
+                background-color:#FFD700;
+            }
+            .wrap{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            header{
+                width: 340px;
+                font-size: 0;
+            }
+            canvas{
+                display: none;
+                border-style: solid;
+                border-width: 10px;
+                border-color: #FFD700;
+            }
+            canvas:focus{
+                outline: none;
+            }
+            
+            /* Top Styles */
+            h1{
+                display: inline-block;
+                width: 100px;
+                font-size: 32px;
+                color: #FFD700;
+            }
+            .score{
+                display: inline-block;
+                width: 240px;
+                font-size: 20px;
+               animation: color: #000000;
+                text-align: right;
+            }
+            .score_value{
+                font-size: inherit;
+            }
+		  @keyframes score{
+  from {background-color: green;}
+  to {background-color: green;}
+}
+            
+            
+            
+            /* All screens style */
+            #gameover a, #setting a, #menu a{
+                display: block;
+            }
+       
+            #gameover a, #setting a:hover, #menu a:hover{
+                cursor: pointer;
+            }
+            
+            #gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
+                content: ">";
+                margin-right: 10px;
+            }
+            
+            /* Menu Screen Style */
+            #menu{
+                display: block;
+                width: 340px;
+                padding-top: 95px;
+                padding-bottom: 95px;
+                font-size: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                color: #2b8505;
+            }
+            
+            #menu h2{
+                -webkit-animation: logo-ani 100ms linear infinite;
+                        animation: logo-ani 100ms linear infinite;
+                margin-bottom: 30px;
+                
+            }
+            
+            #menu a{
+                font-size: 30px;
+            }
+            
+            @-webkit-keyframes logo-ani{
+               50%{-webkit-left: from (0px)
+				to (500px);}
+              100%{-webkit-transform: scale(1.0,1.0);}
+            }
+
+            @keyframes logo-ani{
+               50%{transform: scale(1.3,1.3);}
+              100%{transform: scale(1.0,1.0);}
+            }
+            
+            
+            /* Gjame Over Screen Style */
+            
+            #gameover{
+                display: none;
+                width: 340px;
+                padding-top: 100px;
+                padding-bottom: 95px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                font-size: 30px;
+                color: #2b8505;
+            }
+            
+            #gameover p{
+                margin-top: 25px;
+                font-size: 20px;
+            }
+            
+            /* Settings Screen Style */
+            #setting{
+                display: none;
+                width: 340px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 85px;
+                padding-bottom: 85px;
+                font-size: 30px;
+                color: #2b8505;
+                text-align: center;
+            }
+            
+            #setting h2{
+                margin-bottom: 15px;
+            }
+            
+            #setting p{
+                margin-top: 10px;
+            }
+            
+            #setting input{
+                display:none;
+            }
+            
+            #setting label{
+                cursor: pointer;
+            }
+            
+            #setting input:checked + label{
+                background-color: #2b8505;
+                color: #000;
+            }
+</style>
+
+
+	
+<header class="wrap">
+                <marquee><h1>SNEEK2</h1>
+                <p class="score">apples eaten: <span id="score_value">0</span></p>
+           </marquee> </header>
+            <canvas class="wrap" id="sneek" width="320" height="320" tabindex="1"></canvas>
+        
+            <!-- Game Over Screen -->
+            <div id="gameover">
+                <marquee><h2>Game Over YEAH</h2></marquee>
+                <p>press <span style="background-color: #2b8505; color: #000000">begin</span> to begin a</p>
+                <a id="newgame_gameover">new game</a>
+                <a id="setting_gameover">settings</a>
+            </div>
+        
+            <!-- Setting screen -->
+            <div id="setting">
+                <h2>Settings</h2>
+                
+                <a id="newgame_setting">new game</a>
+                
+                <p>Speed:
+                    <input id="speed1" type="radio" name="speed" value="120" checked/>
+                    <label for="speed1">Slow</label>
+                    <input id="speed2" type="radio" name="speed" value="75"/>
+                    <label for="speed2">Normal</label>
+                    <input id="speed3" type="radio" name="speed" value="35"/>
+                    <label for="speed3">Fast</label>
+				 <input id="speed4" type="radio" name="speed" value="10"/>
+                    <label for="speed4">Fast as f**c boiii</label>
+				 <input id="speed5" type="radio" name="speed" value="1000"/>
+                    <label for="speed5">VERY SLOW</label>
+                </p>
+                
+                <p>Wall:
+                    <input id="wallon" type="radio" name="wall" value="1" checked/>
+                    <label for="wallon">On</label>
+                    <input id="walloff" type="radio" name="wall" value="0"/>
+                    <label for="walloff">Off</label>
+                </p>
+
+            </div>
+        
+            <!-- Main Menu Screen -->
+            <div id="menu">
+                <h2>SNEEK2</h2>
+
+                <a id="newgame_menu">new game</a>
+                <a id="setting_menu">settings</a>
+            </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+
+<script type="text/javascript">
+(function(){
+    /////////////////////////////////////////////////////////////
+    // Canvas & Context
+    var canvas;
+    var ctx;
+    // sneek
+    var sneek;
+    var sneek_dir;
+   var sneek_next_dir;
+    var sneek_speed;
+    var blink;
+    // Food
+    var food = {x: 999999, y: 999999};
+    // Score
+    var score;
+    // Wall
+    var wall;
+    // HTML Elements
+    var screen_sneek;
+    var screen_menu;
+    var screen_setting;
+    var screen_gameover;
+    var button_newgame_menu;
+    var button_newgame_setting;
+    var button_newgame_gameover;
+    var button_setting_menu;
+    var button_setting_gameover;
+    var ele_score;
+    var speed_setting;
+    var wall_setting;
+    /////////////////////////////////////////////////////////////
+    var activeDot = function(x, y){
+        ctx.fillStyle = "#8db600";
+        ctx.fillRect(x * 10, y * 10, 10, 10);
+    }
+     /////////////////////////////////////////////////////////////
+    var changeDir = function(key){
+        if(key == 87 && sneek_dir != 2 || key == 38 && sneek_dir != 2){
+            sneek_next_dir = 0;
+        }else{
+        if (key == 68 && sneek_dir != 3){
+            sneek_next_dir = 1;
+        }else{
+        if (key == 83 && sneek_dir != 0){
+            sneek_next_dir = 2;
+        }else{
+        if(key == 65 && sneek_dir != 1){
+            sneek_next_dir = 3;
+        } } } }
+    }
+    /////////////////////////////////////////////////////////////
+    var addFood = function(){
+        food.x = Math.floor(Math.random() * ((canvas.width / 10) - 1));
+        food.y = Math.floor(Math.random() * ((canvas.height / 10) - 1));
+        for(var i = 0; i < sneek.length; i++){
+            if(checkBlock(food.x, food.y, sneek[i].x, sneek[i].y)){
+                addFood(99999);
+            }
+        }
+    }
+    /////////////////////////////////////////////////////////////
+    var checkBlock = function(x, y, _x, _y){
+        return (x == _x && y == _y) ? true : false;
+    }
+    /////////////////////////////////////////////////////////////
+    var altScore = function(score_val){
+        ele_score.innerHTML = String(score_val);
+    }
+    /////////////////////////////////////////////////////////////
+    var mainLoop = function(){
+            var _x = sneek[0].x;
+            var _y = sneek[0].y;
+      sneek_dir = sneek_next_dir;
+            // 0 - Up, 1 - Right, 2 - Down, 3 - Left
+            switch(sneek_dir){
+                case 0: _y--; break;
+                case 1: _x++; break;
+                case 2: _y++; break;
+                case 3: _x--; break;
+            }
+            sneek.pop();
+            sneek.unshift({x: _x, y: _y});
+        // --------------------
+        // Wall
+            if(wall == 1){
+            // On
+                if (sneek[0].x < 0 || sneek[0].x == canvas.width / 10 || sneek[0].y < 0 || sneek[0].y == canvas.height / 10){
+                    showScreen(3);
+                    return;
+                }
+            }else{
+            // Off
+                for(var i = 0, x = sneek.length; i < x; i++){
+                    if(sneek[i].x < 0){
+                        sneek[i].x = sneek[i].x + (canvas.width / 10);
+                    }
+                    if(sneek[i].x == canvas.width / 10){
+                        sneek[i].x = sneek[i].x - (canvas.width / 10);
+                    }
+                    if(sneek[i].y < 0){
+                        sneek[i].y = sneek[i].y + (canvas.height / 10);
+                    }
+                    if(sneek[i].y == canvas.height / 10){
+                        sneek[i].y = sneek[i].y - (canvas.height / 10);
+                    }
+                }
+            }
+        // -------------------- // Autophagy death
+            for(var i = 1; i < sneek.length; i++){
+                if (sneek[0].x == sneek[i].x && sneek[0].y == sneek[i].y){
+                    showScreen(3);
+                    return;
+                }
+            } // --------------------  // Eat Food
+            if(checkBlock(sneek[0].x, sneek[0].y, food.x, food.y)){
+                sneek[sneek.length] = {x: sneek[0].x, y: sneek[0].y};
+                score += 100;//change back to 1 lmfao
+                altScore(score);
+                addFood();
+                activeDot(food.x, food.y);
+            }
+        // --------------------
+            ctx.beginPath();
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // --------------------
+            for(var i = 0; i < sneek.length; i++){
+                activeDot(sneek[i].x, sneek[i].y);
+            }
+        // --------------------
+            activeDot(food.x, food.y);
+    // Debug
+    //document.getElementById("debug").innerHTML = sneek_dir + " " + sneek_next_dir + " " + sneek[0].x + " " + sneek[0].y;
+            setTimeout(mainLoop, sneek_speed);
+    }
+    /////////////////////////////////////////////////////////////
+    var newGame = function(){
+        showScreen(0);
+        screen_sneek.focus();
+        sneek = [];
+        for(var i = 4; i >= 0; i--){
+            sneek.push({x: i, y: 15});
+        }
+        sneek_next_dir = 1;
+        score = 0;
+        altScore(score);
+        addFood();
+        canvas.onkeydown = function(evt) {
+            evt = evt || window.event;
+            changeDir(evt.keyCode);
+        }
+        mainLoop();
+    }
+    /////////////////////////////////////////////////////////////
+    // Change the sneek speed...
+    // 200 = slow
+    // 150 = normal
+    // 100 = fast
+    var setsneekSpeed = function(speed_value){
+        sneek_speed = speed_value;
+    }
+    /////////////////////////////////////////////////////////////
+    var setWall = function(wall_value){
+        wall = wall_value;
+        if(wall == 0){screen_sneek.style.borderColor = "#808080";}
+        if(wall == 1){screen_sneek.style.borderColor = "#FFFFFF";}
+    }
+    /////////////////////////////////////////////////////////////
+    // 0 for the game
+    // 1 for the main menu
+    // 2 for the settings screen
+    // 3 for the game over screen
+    var showScreen = function(screen_opt){
+        switch(screen_opt){
+            case 0:  screen_sneek.style.display = "block";
+                     screen_menu.style.display = "none";
+                     screen_setting.style.display = "none";
+                     screen_gameover.style.display = "none";
+                     break;
+            case 1:  screen_sneek.style.display = "none";
+                     screen_menu.style.display = "block";
+                     screen_setting.style.display = "none";
+                     screen_gameover.style.display = "none";
+                     break;
+            case 2:  screen_sneek.style.display = "none";
+                     screen_menu.style.display = "none";
+                     screen_setting.style.display = "block";
+                     screen_gameover.style.display = "none";
+                     break;
+            case 3: screen_sneek.style.display = "none";
+                    screen_menu.style.display = "none";
+                    screen_setting.style.display = "none";
+                    screen_gameover.style.display = "block";
+                    break;
+        }
+    }
+    /////////////////////////////////////////////////////////////
+    window.onload = function(){
+        canvas = document.getElementById("sneek");
+        ctx = canvas.getContext("2d");
+            // Screens
+            screen_sneek = document.getElementById("sneek");
+            screen_menu = document.getElementById("menu");
+            screen_gameover = document.getElementById("gameover");
+            screen_setting = document.getElementById("setting");
+            // Buttons
+            button_newgame_menu = document.getElementById("newgame_menu");
+            button_newgame_setting = document.getElementById("newgame_setting");
+            button_newgame_gameover = document.getElementById("newgame_gameover");
+            button_setting_menu = document.getElementById("setting_menu");
+            button_setting_gameover = document.getElementById("setting_gameover");
+            // etc
+            ele_score = document.getElementById("score_value");
+            speed_setting = document.getElementsByName("speed");
+            wall_setting = document.getElementsByName("wall");
+        // --------------------
+        button_newgame_menu.onclick = function(){newGame();};
+        button_newgame_gameover.onclick = function(){newGame();};
+        button_newgame_setting.onclick = function(){newGame();};
+        button_setting_menu.onclick = function(){showScreen(2);};
+        button_setting_gameover.onclick = function(){showScreen(2)};
+        setsneekSpeed(150);
+        setWall(1)
+        showScreen("menu");
+        // --------------------
+        // Settings
+            // speed
+            for(var i = 0; i < speed_setting.length; i++){
+                speed_setting[i].addEventListener("click", function(){
+                    for(var i = 0; i < speed_setting.length; i++){
+                        if(speed_setting[i].checked){
+                            setsneekSpeed(speed_setting[i].value);
+                        }
+                    }
+                });
+            }
+            // wall
+            for(var i = 0; i < wall_setting.length; i++){
+                wall_setting[i].addEventListener("click", function(){
+                    for(var i = 0; i < wall_setting.length; i++){
+                        if(wall_setting[i].checked){
+                            setWall(wall_setting[i].value);
+                        }
+                    }
+                });
+            }
+        document.onkeydown = function(evt){
+            if(screen_gameover.style.display == "block"){
+                evt = evt || window.event;
+                if(evt.keyCode == 32){
+                    newGame();
+                }
+            }
+        }
+    }
+})();
+$(window).keydown(function(e) {
+		       switch (e.keyCode) {
+		            case 37: input.left = true; break;
+		            case 39: input.right = true; break;
+		       }
+			});
+			$(window).keyup(function(e) {
+		       switch (e.keyCode) {
+		            case 37: input.left = false; break;
+		            case 39: input.right = false; break;
+		       }
+			});
+	</script>
+<!--do not mess with this or the game will not work.If you make any changes and it breaks or you get in trouble you WILL be held accountable.-->
